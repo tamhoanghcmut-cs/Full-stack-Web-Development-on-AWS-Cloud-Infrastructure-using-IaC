@@ -1,0 +1,36 @@
+# Node.js
+node_modules/
+.next/
+out/
+dist/
+coverage/
+*.log
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+!*.example.tfvars
+!*.example.tfvars.json
+*.tfplan
+crash.log
+
+# Credentials and private keys
+*.pem
+*.key
+.aws/
+
+# IDE
+.vscode/
+.idea/
+
+# Operating system
+.DS_Store
+Thumbs.db
