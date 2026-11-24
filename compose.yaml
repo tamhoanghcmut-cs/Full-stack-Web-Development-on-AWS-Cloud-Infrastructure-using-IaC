@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: j7
+      POSTGRES_USER: j7
+      POSTGRES_PASSWORD: j7_local_only
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - dev-postgres:/var/lib/postgresql/data
+
+volumes:
+  dev-postgres:

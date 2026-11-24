@@ -1,0 +1,9 @@
+node_modules
+.next
+.env*
+npm-debug.log*
+next-env.d.ts
+*.pem
+*.key
+*.tsbuildinfo
+src/generated/prisma/

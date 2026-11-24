@@ -5,6 +5,8 @@ out/
 dist/
 coverage/
 *.log
+*.tsbuildinfo
+/web/next-env.d.ts
 
 # Environment variables
 .env
@@ -34,3 +36,5 @@ crash.log
 # Operating system
 .DS_Store
 Thumbs.db
+# Generated Prisma client
+/web/src/generated/prisma/

@@ -1,1 +1,2 @@
-# TODO: Terraform validation
+# Terraform validation là placeholder sau MVP.
+# TODO(OPS-01, owner=Tâm điều phối): CI phản ánh trạng thái thật, deploy cần phê duyệt. Nghiệm thu: Dùng PR thử và kiểm tra logs workflow.
