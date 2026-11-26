@@ -5,7 +5,7 @@ import styles from "./home.module.css";
 
 const formatPrice = new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" });
 
-export function ProductCard({ product, preview }: { product: ProductSummary; preview: boolean }) {
+export function ProductCard({ product, preview, soldOut = false }: { product: ProductSummary; preview: boolean; soldOut?: boolean }) {
   const href = `/products/${encodeURIComponent(product.id)}`;
 
   return (
@@ -26,6 +26,7 @@ export function ProductCard({ product, preview }: { product: ProductSummary; pre
         <h3><Link href={href} prefetch={false}>{product.name}</Link></h3>
         <p>{product.description}</p>
         <p className={styles.price}>{formatPrice.format(product.priceVnd)}</p>
+        {soldOut && <p className={styles.soldOut}>Hết hàng</p>}
         {/* TODO(WEB-02, owner=Phát): Dùng chi tiết thật theo ID từ catalog. Nghiệm thu: ID hợp lệ hiện chi tiết, ID thiếu trả 404. */}
         {preview && <p className={styles.previewNote}>Trang chi tiết đang phát triển</p>}
       </div>

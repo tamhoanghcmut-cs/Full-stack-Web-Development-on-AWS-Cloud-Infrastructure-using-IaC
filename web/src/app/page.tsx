@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { CategorySection } from "../components/home/CategorySection";
 import { FeaturedProducts } from "../components/home/FeaturedProducts";
-import { Footer } from "../components/home/Footer";
-import { Header } from "../components/home/Header";
 import { HeroSection } from "../components/home/HeroSection";
 import styles from "../components/home/home.module.css";
 
@@ -15,7 +13,6 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className={styles.home}>
-      <Header />
       <div className={styles.container}>
         <HeroSection />
         <CategorySection />
@@ -34,7 +31,6 @@ export default function Page() {
           </dl>
         </section>
       </div>
-      <Footer />
     </div>
   );
 }
