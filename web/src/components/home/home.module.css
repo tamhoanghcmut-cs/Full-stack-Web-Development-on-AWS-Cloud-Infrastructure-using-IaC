@@ -114,4 +114,5 @@
   padding: .7rem;
 }
 .productInfo .previewNote { margin-top: .5rem; font-size: .85rem; }
+.productInfo .soldOut { margin-top: .4rem; font-size: .85rem; font-weight: 750; color: #b42318; }
 .imageFallback { color: var(--muted); font-size: .94rem; }
