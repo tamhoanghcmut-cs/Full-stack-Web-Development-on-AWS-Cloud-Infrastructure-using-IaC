@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: j7-postgres-local
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: j7
+      POSTGRES_PASSWORD: j7_local_only
+      POSTGRES_DB: j7
+    ports:
+      - "5432:5432"
+    volumes:
+      - j7_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U j7 -d j7"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  j7_pgdata:
