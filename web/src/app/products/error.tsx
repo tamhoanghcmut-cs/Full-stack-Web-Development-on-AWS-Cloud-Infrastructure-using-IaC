@@ -15,7 +15,7 @@ export default function ProductsError({ error, retry }: { error: unknown; retry:
       <div className={styles.container}>
         <section className={styles.section} aria-labelledby="products-error-title">
           <h1 id="products-error-title">Không thể tải sản phẩm</h1>
-          <p className={styles.status} role="alert">Đã có lỗi khi tải danh sách sản phẩm. Vui lòng thử lại.</p>
+          <p className={styles.status} role="alert">Đã có lỗi khi tải dữ liệu sản phẩm. Vui lòng thử lại.</p>
           <button type="button" className={styles.cta} onClick={() => retry()}>Thử lại</button>
         </section>
       </div>

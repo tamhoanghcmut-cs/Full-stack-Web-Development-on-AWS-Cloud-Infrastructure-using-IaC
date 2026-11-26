@@ -11,7 +11,7 @@ export async function ProductList() {
   }
 
   return (
-    <ul className={styles.productGrid}>
+    <ul className={`${styles.productGrid} ${styles.clickableCards}`}>
       {products.map((product) => (
         <li key={product.id}>
           <ProductCard
@@ -24,7 +24,7 @@ export async function ProductList() {
               image: product.imageUrl ? { src: product.imageUrl, alt: product.name } : null,
             }}
             preview={false}
-            soldOut={product.stockQuantity === 0}
+            soldOut={product.stockQuantity <= 0}
           />
         </li>
       ))}
