@@ -59,7 +59,7 @@
 .categoryArt, .productArt { display: grid; place-items: center; background: #edecff; color: var(--accent); }
 .categoryArt { flex: 0 0 2.75rem; height: 2.75rem; border-radius: .55rem; }
 .productCard { height: 100%; border: 1px solid var(--line); border-radius: .85rem; overflow: hidden; }
-.productArt { height: 10rem; background: radial-gradient(circle, #fff 0, #e8e5ff 83%); }
+.productArt { position: relative; overflow: hidden; height: 10rem; background: radial-gradient(circle, #fff 0, #e8e5ff 83%); }
 .productArt .device { font-size: 3.5rem; filter: drop-shadow(0 .13em .15em #4436ac44); }
 .productInfo { padding: 1rem; }
 .productInfo h3 a { text-decoration: none; }
@@ -107,6 +107,8 @@
 }
 
 .productArt img {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
