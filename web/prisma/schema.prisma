@@ -7,4 +7,83 @@ datasource db {
   provider = "postgresql"
 }
 
-// TODO(API-01, owner=Nhật): Migration chạy trên DB sạch, khóa ngoại hợp lệ và giá snapshot dạng số nguyên. Nghiệm thu: Chạy `npx prisma validate`, `npx prisma generate` và migrate trên DB dev.
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  SHIPPING
+  COMPLETED
+  CANCELLED
+}
+
+model Customer {
+  id           String   @id @default(cuid())
+  fullName     String
+  email        String   @unique
+  passwordHash String
+  phone        String?
+  address      String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  orders       Order[]
+}
+
+model Staff {
+  id           String   @id @default(cuid())
+  fullName     String
+  email        String   @unique
+  passwordHash String
+  phone        String?
+  department   String?
+  position     String?
+  role         String   @default("STAFF")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  orders       Order[]
+}
+
+model Product {
+  id          String      @id @default(cuid())
+  name        String
+  description String?
+  priceVnd    Int
+  stock       Int         @default(0)
+  imageUrl    String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  orderItems  OrderItem[]
+}
+
+model Order {
+  id            String      @id @default(cuid())
+  orderDate     DateTime    @default(now())
+  totalVnd      Int
+  paymentMethod String      @default("COD")
+  status        OrderStatus @default(PENDING)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  customerId    String
+  customer      Customer    @relation(fields: [customerId], references: [id])
+
+  staffId       String?
+  staff         Staff?      @relation(fields: [staffId], references: [id])
+
+  items         OrderItem[]
+}
+
+model OrderItem {
+  id           String  @id @default(cuid())
+  quantity     Int
+  unitPriceVnd Int
+
+  orderId      String
+  order        Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  productId    String
+  product      Product @relation(fields: [productId], references: [id])
+
+  @@unique([orderId, productId])
+}
